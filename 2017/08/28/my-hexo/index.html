@@ -1,99 +1,230 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>my-hexo | Hexo  blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      搭建hexo并且在阿里云服务器更新 | Hexo  blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="misslu">
+    
+    
+
+    <meta name="description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my-hexo">
-<meta property="og:url" content="http:/119.23.223.107:443/2017/08/28/my-hexo/index.html">
+<meta property="og:title" content="搭建hexo并且在阿里云服务器更新 | Hexo  blog">
+<meta property="og:url" content="http:/119.23.223.107:443/huno/2017/08/28/my-hexo/index.html">
 <meta property="og:site_name" content="Hexo  blog">
 <meta property="og:description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:/119.23.223.107:443/2017/08/28/my-hexo/quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg%20=506x203">
-<meta property="og:updated_time" content="2017-08-27T16:29:55.000Z">
+<meta property="og:image" content="http:/119.23.223.107:443/huno/2017/08/28/my-hexo/quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg%20=506x203">
+<meta property="og:updated_time" content="2017-08-28T17:00:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my-hexo">
+<meta name="twitter:title" content="搭建hexo并且在阿里云服务器更新 | Hexo  blog">
 <meta name="twitter:description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
-<meta name="twitter:image" content="http:/119.23.223.107:443/2017/08/28/my-hexo/quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg%20=506x203">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo  blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
+<meta name="twitter:image" content="http:/119.23.223.107:443/huno/2017/08/28/my-hexo/quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg%20=506x203">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/huno/favicon.png">
+    
+    <link rel="stylesheet" href="/huno/css/uno.css">
+    <link rel="stylesheet" href="/huno/css/highlight.css">
+    <link rel="stylesheet" href="/huno/css/archive.css">
+    <link rel="stylesheet" href="/huno/css/china-social-icon.css">
 
 </head>
-
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo  blog</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Welcome to my home~</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
         
-          <a class="main-nav-link" href="/">Home</a>
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo  blog</a></h1>
+        <hr class="panel-cover__divider" />
+
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+        <p class="panel-cover__description">
+          Welcome to my home~
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
         
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http:/119.23.223.107:443"></form>
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/huno/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/huno/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/huno/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/libra92" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
       </div>
+
     </div>
+
+    <div class="panel-cover--overlay"></div>
   </div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-my-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/28/my-hexo/" class="article-date">
-  <time datetime="2017-08-27T16:27:23.000Z" itemprop="datePublished">2017-08-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      my-hexo
-    </h1>
-  
 
-      </header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
+    <h1 class="post-title">搭建hexo并且在阿里云服务器更新</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-08-28" class="post-meta__date date">2017-08-28</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/huno/tags/hexo/">hexo</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <ul>
 <li>作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。</li>
 </ul>
 <h3 id="本文内容："><a href="#本文内容：" class="headerlink" title="本文内容："></a>本文内容：</h3><p>1.云服务器环境部署：nginx安装配置，git安装配置；<br>2.本地环境部署：hexo安装配置，提交至服务器</p>
@@ -121,7 +252,8 @@
 <p>4.编辑post-receive文件，将以下内容根据自己的git仓库，git临时库，网站根目录进行替换后写入post-receive中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash -l</div><div class="line">GIT_REPO=/blog/hexo/gremory.git  # git仓库目录</div><div class="line">TMP_GIT_CLONE=/tmp/hexo  # 临时仓库，没有的话先mkdir创建目录</div><div class="line">PUBLIC_WWW=/usr/share/nginx/hexo  # 网站根目录，可直接cd到/usr/share/nginx路径下创建</div><div class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;  # 删除临时仓库</div><div class="line">git clone $GIT_REPO $TMP_GIT_CLONE  # 克隆到临时仓库</div><div class="line">rm -rf $&#123;PUBLIC_WWW&#125;/*  # 删除博客目录所有内容</div><div class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125;  # 将仓库文件拷贝到博客目录</div><div class="line">cd ~</div><div class="line">exit</div><div class="line"></div><div class="line">#另一种写法 </div><div class="line">#rm -rf /home/git/hexo</div><div class="line">#git clone /home/git/hexo.git /home/git/hexo</div><div class="line"></div><div class="line">#rm -rf /usr/share/nginx/hexo/*</div><div class="line">#mv /home/git/hexo/* /usr/share/nginx/hexo</div></pre></td></tr></table></figure></p>
 <p>5.给post-receive赋予执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x post-receive</div></pre></td></tr></table></figure></p>
 <p>6.配置nginx</p>
-<h2 id="三、本地配置步骤"><a href="#三、本地配置步骤" class="headerlink" title="三、本地配置步骤"></a>三、本地配置步骤</h2><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<h2 id="三、本地配置步骤"><a href="#三、本地配置步骤" class="headerlink" title="三、本地配置步骤"></a>三、本地配置步骤</h2><p>1.安装各种工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   # 安装homebrew</div><div class="line">brew install node   # 安装node.js</div><div class="line">npm install -g hexo-cli  # 安装Hexo</div><div class="line">cd /Documents</div><div class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</div></pre></td></tr></table></figure></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
 <li><a href="http://www.cnblogs.com/peteremperor/p/6135809.html" target="_blank" rel="external">Mac下使用SSH(密钥)访问Github</a></li>
 <li><a href="http://www.jianshu.com/p/b7886271e21a" target="_blank" rel="external">Hexo安装和配置</a></li>
 <li><a href="https://segmentfault.com/a/1190000005723321" target="_blank" rel="external">阿里云VPS搭建自己的的Hexo博客</a></li>
@@ -133,121 +265,63 @@
 <li><a href="http://www.cnblogs.com/visugar/p/6821777.html" target="_blank" rel="external">hexo从零开始到搭建完整</a></li>
 </ul>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http:/119.23.223.107:443/2017/08/28/my-hexo/" data-id="cj6uyc39i0001wt3qs2qugg5e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+  </section>
 
-    </footer>
-  </div>
-  
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
     
-<nav id="article-nav">
-  
-  
-    <a href="/2017/08/26/Hello-Hexo/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello Hexo</div>
-    </a>
-  
-</nav>
+</section>
 
-  
+
 </article>
 
-</section>
-        
-          <aside id="sidebar">
-  
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
     
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tag/">tag</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/tag/" style="font-size: 10px;">tag</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/08/28/my-hexo/">my-hexo</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/26/Hello-Hexo/">Hello Hexo</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/26/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 misslu<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
+        </div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+
+    <!-- js files -->
+    <script src="/huno/js/jquery.min.js"></script>
+    <script src="/huno/js/main.js"></script>
+    <script src="/huno/js/scale.fix.js"></script>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    <script src="/huno/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
 
 
-<script src="/js/script.js"></script>
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
 
-  </div>
 </body>
 </html>
