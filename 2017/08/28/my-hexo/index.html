@@ -1,233 +1,82 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    
-
-    <title>
-      搭建hexo并且在阿里云服务器更新 | Hexo  blog 
-    </title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    
-      <meta name="author" content="misslu">
-    
-    
-
-    <meta name="description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
-<meta name="keywords" content="hexo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="搭建hexo并且在阿里云服务器更新 | Hexo  blog">
-<meta property="og:url" content="http:/118.24.105.239:66/2017/08/28/my-hexo/index.html">
-<meta property="og:site_name" content="Hexo  blog">
-<meta property="og:description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:/118.24.105.239:66/2017/08/28/my-hexo/quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg%20=506x203">
-<meta property="og:updated_time" content="2019-12-26T13:15:48.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建hexo并且在阿里云服务器更新 | Hexo  blog">
-<meta name="twitter:description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
-<meta name="twitter:image" content="http:/118.24.105.239:66/2017/08/28/my-hexo/quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg%20=506x203">
-    
-    
-    
-      <link rel="icon" type="image/x-icon" href="/favicon.png">
-    
-    <link rel="stylesheet" href="/css/uno.css">
-    <link rel="stylesheet" href="/css/highlight.css">
-    <link rel="stylesheet" href="/css/archive.css">
-    <link rel="stylesheet" href="/css/china-social-icon.css">
-
-</head>
-<body>
-
-    <span class="mobile btn-mobile-menu">
-        <i class="icon icon-list btn-mobile-menu__icon"></i>
-        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
-    </span>
-
-    
-
-<header class="panel-cover panel-cover--collapsed">
-
-
-  <div class="panel-main">
-
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
   
-    <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-
-        
-
-        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Hexo  blog</a></h1>
-        <hr class="panel-cover__divider" />
-
-        
-        <p class="panel-cover__description">
-          Welcome to my home~
-        </p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary" />
-        
-
-        <div class="navigation-wrapper">
-
-          <nav class="cover-navigation cover-navigation--primary">
-            <ul class="navigation">
-
-              
-                
-                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
-              
-                
-                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
-              
-                
-                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
-              
-
-            </ul>
-          </nav>
-
-          <!-- ----------------------------
-To add a new social icon simply duplicate one of the list items from below
-and change the class in the <i> tag to match the desired social network
-and then add your link to the <a>. Here is a full list of social network
-classes that you can use:
-
-    icon-social-500px
-    icon-social-behance
-    icon-social-delicious
-    icon-social-designer-news
-    icon-social-deviant-art
-    icon-social-digg
-    icon-social-dribbble
-    icon-social-facebook
-    icon-social-flickr
-    icon-social-forrst
-    icon-social-foursquare
-    icon-social-github
-    icon-social-google-plus
-    icon-social-hi5
-    icon-social-instagram
-    icon-social-lastfm
-    icon-social-linkedin
-    icon-social-medium
-    icon-social-myspace
-    icon-social-path
-    icon-social-pinterest
-    icon-social-rdio
-    icon-social-reddit
-    icon-social-skype
-    icon-social-spotify
-    icon-social-stack-overflow
-    icon-social-steam
-    icon-social-stumbleupon
-    icon-social-treehouse
-    icon-social-tumblr
-    icon-social-twitter
-    icon-social-vimeo
-    icon-social-xbox
-    icon-social-yelp
-    icon-social-youtube
-    icon-social-zerply
-    icon-mail
-
--------------------------------->
-
-<!-- add social info here -->
-
-
-
-<nav class="cover-navigation navigation--social">
-  <ul class="navigation">
-
+  
+  
+    <meta name="description" content="attitude is everything">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    搭建hexo并且在阿里云服务器更新 |
     
-      <!-- Github -->
-      <li class="navigation__item">
-        <a href="https://github.com/libra92" title="Huno on GitHub">
-          <i class='icon icon-social-github'></i>
-          <span class="label">GitHub</span>
-        </a>
-      </li>
+    Hexo  blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+<link rel="alternate" href="atom.xml" title="Hexo  blog" type="application/atom+xml">
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-my-hexo" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      搭建hexo并且在阿里云服务器更新
+    </h1>
+  
+  
+
+
+
+
+      </header>
     
 
-    <!-- China social icon -->
-    <!--
     
-      <li class="navigation__item">
-        <a href="" title="">
-          <i class='icon cs-icon-douban'></i>
-          <span class="label">Douban</span>
-        </a>
-      </li>
-
-      <li class="navigation__item">
-        <a href="" title="">
-          <i class='icon cs-icon-weibo'></i>
-          <span class="label">Weibo</span>
-        </a>
-      </li>
-
-    -->
-
-
-
-  </ul>
-</nav>
-
-
-
-        </div>
-
+      <div class="article-meta">
+        <a href="/2017/08/28/my-hexo/" class="article-date">
+  <time datetime="2017-08-27T16:27:23.000Z" itemprop="datePublished">2017-08-28</time>
+</a>
+        
       </div>
-
-    </div>
-
-    <div class="panel-cover--overlay"></div>
-  </div>
-</header>
-
-
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner entry">
-            
-
-<article class="post-container post-container--single">
-
-  <header class="post-header">
     
-    <h1 class="post-title">搭建hexo并且在阿里云服务器更新</h1>
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
 
     
 
-    <div class="post-meta">
-      <time datetime="2017-08-28" class="post-meta__date date">2017-08-28</time> 
+    <div class="article-entry" itemprop="articleBody">
+      
 
-      <span class="post-meta__tags tags">
 
-          
+      
 
-          
-             &#8226; 标签:
-            <font class="tags">
-              <a class="tags-link" href="/tags/hexo/">hexo</a>
-            </font>
-          
-
-      </span>
-    </div>
-    
-    
-
-  </header>
-
-  <section id="post-content" class="article-content post">
-    <ul>
+      
+        <ul>
 <li>作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。</li>
 </ul>
-<h3 id="本文内容："><a href="#本文内容：" class="headerlink" title="本文内容："></a>本文内容：</h3><p>1.云服务器环境部署：nginx安装配置，git安装配置；<br>2.本地环境部署：hexo安装配置，提交至服务器</p>
+<h3 id="本文内容："><a href="#本文内容：" class="headerlink" title="本文内容："></a>本文内容：</h3><p>1.云服务器环境部署：nginx安装配置，git安装配置；<br>2.本地环境部署：hexo安装配置，提交至服务器<br> <a id="more"></a></p>
 <h2 id="一、前置条件"><a href="#一、前置条件" class="headerlink" title="一、前置条件"></a>一、前置条件</h2><p>1.你需要有一台电脑，我的电脑-MacOS 10.12.3<br>2.一个云服务器，我的ECS-ubuntu_16_0402_64_40G</p>
 <h2 id="二、服务器配置步骤"><a href="#二、服务器配置步骤" class="headerlink" title="二、服务器配置步骤"></a>二、服务器配置步骤</h2><p>1.连接服务器</p>
 <ul>
@@ -244,18 +93,18 @@ classes that you can use:
 <p>2.安装各种依赖服务</p>
 <ul>
 <li><p>命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">apt update   # 同步/etc/apt/sources.list和/etc/apt/sources.list.d 中列出的源的索引</div><div class="line">apt upgrade -y   # 升级已安装的所有软件包</div><div class="line">apt install git -y   # 安装git</div><div class="line">curl -sL https://deb.nodesource.com/setup | bash</div><div class="line">apt install nodejs -y   # 安装nodejs</div><div class="line">apt install nginx -y   # 安装nginx</div><div class="line">cd /etc/nginx/sites-available</div><div class="line">rm -rf default   # 删除默认配置</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt update   # 同步/etc/apt/sources.list和/etc/apt/sources.list.d 中列出的源的索引</span><br><span class="line">apt upgrade -y   # 升级已安装的所有软件包</span><br><span class="line">apt install git -y   # 安装git</span><br><span class="line">curl -sL https://deb.nodesource.com/setup | bash</span><br><span class="line">apt install nodejs -y   # 安装nodejs</span><br><span class="line">apt install nginx -y   # 安装nginx</span><br><span class="line">cd /etc/nginx/sites-available</span><br><span class="line">rm -rf default   # 删除默认配置</span><br></pre></td></tr></table></figure>
 <p>  此时访问IP应该出现nginx默认页面（如下图所示），恭喜nginx安装成功~<br><img src="quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg =506x203" alt="IMAGE"></p>
 </li>
 </ul>
-<p>3.创建远程git库并初始化一个中心仓库（裸仓库）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir -p /blog/hexo/gremory.git    # 依次创建目录，建议想一个自己比较好记的路径，后面会用到</div><div class="line">cd /blog/hexo/gremory.git</div><div class="line">git init --bare   # 初始化一个裸仓库，裸仓库不包含工作区</div><div class="line">cd hooks</div><div class="line">vi post-receive  # 创建并编辑文件， 此文件是用来监听本地的push操作时执行文件里的命令</div></pre></td></tr></table></figure></p>
-<p>4.编辑post-receive文件，将以下内容根据自己的git仓库，git临时库，网站根目录进行替换后写入post-receive中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash -l</div><div class="line">GIT_REPO=/blog/hexo/gremory.git  # git仓库目录</div><div class="line">TMP_GIT_CLONE=/tmp/hexo  # 临时仓库，没有的话先mkdir创建目录</div><div class="line">PUBLIC_WWW=/usr/share/nginx/hexo  # 网站根目录，可直接cd到/usr/share/nginx路径下创建</div><div class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;  # 删除临时仓库</div><div class="line">git clone $GIT_REPO $TMP_GIT_CLONE  # 克隆到临时仓库</div><div class="line">rm -rf $&#123;PUBLIC_WWW&#125;/*  # 删除博客目录所有内容</div><div class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125;  # 将仓库文件拷贝到博客目录</div><div class="line">cd ~</div><div class="line">exit</div><div class="line"></div><div class="line">#另一种写法 </div><div class="line">#rm -rf /home/git/hexo</div><div class="line">#git clone /home/git/hexo.git /home/git/hexo</div><div class="line"></div><div class="line">#rm -rf /usr/share/nginx/hexo/*</div><div class="line">#mv /home/git/hexo/* /usr/share/nginx/hexo</div></pre></td></tr></table></figure></p>
-<p>5.给post-receive赋予执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x post-receive</div></pre></td></tr></table></figure></p>
+<p>3.创建远程git库并初始化一个中心仓库（裸仓库）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /blog/hexo/gremory.git    # 依次创建目录，建议想一个自己比较好记的路径，后面会用到</span><br><span class="line">cd /blog/hexo/gremory.git</span><br><span class="line">git init --bare   # 初始化一个裸仓库，裸仓库不包含工作区</span><br><span class="line">cd hooks</span><br><span class="line">vi post-receive  # 创建并编辑文件， 此文件是用来监听本地的push操作时执行文件里的命令</span><br></pre></td></tr></table></figure></p>
+<p>4.编辑post-receive文件，将以下内容根据自己的git仓库，git临时库，网站根目录进行替换后写入post-receive中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash -l</span><br><span class="line">GIT_REPO=/blog/hexo/gremory.git  # git仓库目录</span><br><span class="line">TMP_GIT_CLONE=/tmp/hexo  # 临时仓库，没有的话先mkdir创建目录</span><br><span class="line">PUBLIC_WWW=/usr/share/nginx/hexo  # 网站根目录，可直接cd到/usr/share/nginx路径下创建</span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;  # 删除临时仓库</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE  # 克隆到临时仓库</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;/*  # 删除博客目录所有内容</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125;  # 将仓库文件拷贝到博客目录</span><br><span class="line">cd ~</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">#另一种写法 </span><br><span class="line">#rm -rf /home/git/hexo</span><br><span class="line">#git clone /home/git/hexo.git /home/git/hexo</span><br><span class="line"></span><br><span class="line">#rm -rf /usr/share/nginx/hexo/*</span><br><span class="line">#mv /home/git/hexo/* /usr/share/nginx/hexo</span><br></pre></td></tr></table></figure></p>
+<p>5.给post-receive赋予执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure></p>
 <p>6.配置nginx</p>
-<h2 id="三、本地配置步骤"><a href="#三、本地配置步骤" class="headerlink" title="三、本地配置步骤"></a>三、本地配置步骤</h2><p>1.安装各种工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   # 安装homebrew</div><div class="line">brew install node   # 安装node.js</div><div class="line">npm install -g hexo-cli  # 安装Hexo</div><div class="line">cd /Documents</div><div class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</div></pre></td></tr></table></figure></p>
-<p>2.初始化Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">`</div><div class="line">cd /Documents</div><div class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</div><div class="line">hexo init   # 初始化blog环境</div><div class="line"></div><div class="line">hexo d -fg   # 部署</div><div class="line">hexo s   # 开启本地预览服务</div></pre></td></tr></table></figure></p>
-<p>`* 此时访问<a href="http://localhost:4000，能看到blog主页。" target="_blank" rel="external">http://localhost:4000，能看到blog主页。</a></p>
-<h2 id="四、提交到服务器"><a href="#四、提交到服务器" class="headerlink" title="四、提交到服务器"></a>四、提交到服务器</h2><p>1.进入本地博客目录，执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .  # 把需要更新的所有文件添加到本地仓库</div><div class="line">git commit -m &quot;update message&quot;  # 提交到本地仓库</div><div class="line">git push  # 提交到远程仓库，这里指服务器，如果提示需要输入密码，输入服务器密码即可；</div></pre></td></tr></table></figure></p>
+<h2 id="三、本地配置步骤"><a href="#三、本地配置步骤" class="headerlink" title="三、本地配置步骤"></a>三、本地配置步骤</h2><p>1.安装各种工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   # 安装homebrew</span><br><span class="line">brew install node   # 安装node.js</span><br><span class="line">npm install -g hexo-cli  # 安装Hexo</span><br><span class="line">cd /Documents</span><br><span class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</span><br></pre></td></tr></table></figure></p>
+<p>2.初始化Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">`</span><br><span class="line">cd /Documents</span><br><span class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</span><br><span class="line">hexo init   # 初始化blog环境</span><br><span class="line"></span><br><span class="line">hexo d -fg   # 部署</span><br><span class="line">hexo s   # 开启本地预览服务</span><br></pre></td></tr></table></figure></p>
+<p>`* 此时访问<a href="http://localhost:4000，能看到blog主页。" target="_blank" rel="noopener">http://localhost:4000，能看到blog主页。</a></p>
+<h2 id="四、提交到服务器"><a href="#四、提交到服务器" class="headerlink" title="四、提交到服务器"></a>四、提交到服务器</h2><p>1.进入本地博客目录，执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .  # 把需要更新的所有文件添加到本地仓库</span><br><span class="line">git commit -m &quot;update message&quot;  # 提交到本地仓库</span><br><span class="line">git push  # 提交到远程仓库，这里指服务器，如果提示需要输入密码，输入服务器密码即可；</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>如果提交的时候提示cp: target ‘<em> </em> *’ is not a directory意思是这不是一个目录, 所以要去创建一个目录</li>
 </ul>
@@ -268,76 +117,175 @@ classes that you can use:
 <li>type: git<br>repo:</li>
 <li>type: heroku<br>repo:</li>
 </ul>
+<h2 id="六、其他事项"><a href="#六、其他事项" class="headerlink" title="六、其他事项"></a>六、其他事项</h2><p>1.如何做到首页默认显示摘要？</p>
+<ul>
+<li>在希望显示为摘要的段落后加上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
-<li><a href="http://www.cnblogs.com/peteremperor/p/6135809.html" target="_blank" rel="external">Mac下使用SSH(密钥)访问Github</a></li>
-<li><a href="http://www.jianshu.com/p/b7886271e21a" target="_blank" rel="external">Hexo安装和配置</a></li>
-<li><a href="https://segmentfault.com/a/1190000005723321" target="_blank" rel="external">阿里云VPS搭建自己的的Hexo博客</a></li>
-<li><a href="https://yuxiang.ren/2017/04/24/use-hexo-on-aliyun-and-update-with-git/" target="_blank" rel="external">在阿里云上使用hexo并且用git更新</a></li>
-<li><a href="http://www.jianshu.com/p/8c55f103e8b4" target="_blank" rel="external">Hexo与阿里云虚拟主机搭建博客</a></li>
-<li><a href="https://www.zhihu.com/question/60329559" target="_blank" rel="external">如何使用阿里云+Hexo搭建个人静态博客?</a></li>
-<li><a href="http://sobaigu.com/Hexo-git-to-vps.html" target="_blank" rel="external">开始新的折腾，Hexo博客Git-VPS部署完整记录</a></li>
-<li><a href="http://blog.csdn.net/anonymalias/article/details/50528946" target="_blank" rel="external">通过Hexo在GitHub搭站全记录</a></li>
-<li><a href="http://www.cnblogs.com/visugar/p/6821777.html" target="_blank" rel="external">hexo从零开始到搭建完整</a></li>
-<li><a href="https://hexo.io/zh-cn/docs/one-command-deployment" target="_blank" rel="external">Hexo</a></li>
+<li><a href="http://www.cnblogs.com/peteremperor/p/6135809.html" target="_blank" rel="noopener">Mac下使用SSH(密钥)访问Github</a></li>
+<li><a href="http://www.jianshu.com/p/b7886271e21a" target="_blank" rel="noopener">Hexo安装和配置</a></li>
+<li><a href="https://segmentfault.com/a/1190000005723321" target="_blank" rel="noopener">阿里云VPS搭建自己的的Hexo博客</a></li>
+<li><a href="https://yuxiang.ren/2017/04/24/use-hexo-on-aliyun-and-update-with-git/" target="_blank" rel="noopener">在阿里云上使用hexo并且用git更新</a></li>
+<li><a href="http://www.jianshu.com/p/8c55f103e8b4" target="_blank" rel="noopener">Hexo与阿里云虚拟主机搭建博客</a></li>
+<li><a href="https://www.zhihu.com/question/60329559" target="_blank" rel="noopener">如何使用阿里云+Hexo搭建个人静态博客?</a></li>
+<li><a href="http://sobaigu.com/Hexo-git-to-vps.html" target="_blank" rel="noopener">开始新的折腾，Hexo博客Git-VPS部署完整记录</a></li>
+<li><a href="http://blog.csdn.net/anonymalias/article/details/50528946" target="_blank" rel="noopener">通过Hexo在GitHub搭站全记录</a></li>
+<li><a href="http://www.cnblogs.com/visugar/p/6821777.html" target="_blank" rel="noopener">hexo从零开始到搭建完整</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/one-command-deployment" target="_blank" rel="noopener">Hexo</a></li>
 </ul>
 
-  </section>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http:/118.24.105.239:66/2017/08/28/my-hexo/" data-id="ck4mwetxw0004shfyz9ia1q9z"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
-  <section class="post-comments">
+    </footer>
 
-    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+  </div>
+
+  
     
-</section>
+  <nav class="article-nav">
+    
+      <a href="/2019/12/26/jenkins/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            tomcat+jenkins+ant+jmeter部署
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2017/08/26/Hello-Hexo/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">Hello Hexo</div>
+      </a>
+    
+  </nav>
 
+
+  
+
+  
+    
+  
 
 </article>
 
 
-            <footer class="footer">
 
-    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
-    
-</footer>
-        </div>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
     </div>
 
-    <!-- js files -->
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/scale.fix.js"></script>
+    <ul class="list-inline">
+      <li>&copy; 2019 Hexo  blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+      <li>粤ICP备 - <a href="http://beian.miit.gov.cn">18097118号</a></li>
+    </ul>
+  </div>
+<div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Hexo  blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
     
-
+      <li class="nav-item">
+        <a class="nav-item-link" href="/#blog">Home</a>
+      </li>
     
-
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript"> 
-        $(document).ready(function(){
-            MathJax.Hub.Config({ 
-                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
-            });
-        });
-    </script>
-
-
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
     
-
-    <script src="/js/awesome-toc.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $.awesome_toc({
-                overlay: true,
-                contentId: "post-content",
-            });
-        });
-    </script>
-
-
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
     
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
     
-    <!--kill ie6 -->
-<!--[if IE 6]>
-  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
 
 </body>
 </html>

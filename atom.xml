@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo  blog</title>
+  
+  <subtitle>Welcome to my home~</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://118.24.105.239:66/"/>
+  <updated>2019-12-26T15:41:41.000Z</updated>
+  <id>http://118.24.105.239:66/</id>
+  
+  <author>
+    <name>misslu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>tomcat+jenkins+ant+jmeter部署</title>
+    <link href="http://118.24.105.239:66/2019/12/26/jenkins/"/>
+    <id>http://118.24.105.239:66/2019/12/26/jenkins/</id>
+    <published>2019-12-26T13:06:37.000Z</published>
+    <updated>2019-12-26T15:41:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>1.官网下载对应的版本，<a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-90.cgi</a><br> <img src="/images/Tomcat1.jpg" alt><br> <a id="more"></a></p><p>2.解压文件至E盘<br>3.打开终端进入bin目录下，执行service.bat install<br>E:\Program Files\apache-tomcat-9.0.30\bin<br> <img src="/images/Tomcat2.jpg" alt><br>4.在tomcat\bin目录，双击 tomcat9W.exe 图形界面程序，在弹出的图形界面中，点击start，运行tomcat，浏览器输入localhost:8080,访问</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;安装Tomcat&quot;&gt;&lt;a href=&quot;#安装Tomcat&quot; class=&quot;headerlink&quot; title=&quot;安装Tomcat&quot;&gt;&lt;/a&gt;安装Tomcat&lt;/h2&gt;&lt;p&gt;1.官网下载对应的版本，&lt;a href=&quot;https://tomcat.apache.org/download-90.cgi&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://tomcat.apache.org/download-90.cgi&lt;/a&gt;&lt;br&gt; &lt;img src=&quot;/images/Tomcat1.jpg&quot; alt&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>搭建hexo并且在阿里云服务器更新</title>
+    <link href="http://118.24.105.239:66/2017/08/28/my-hexo/"/>
+    <id>http://118.24.105.239:66/2017/08/28/my-hexo/</id>
+    <published>2017-08-27T16:27:23.000Z</published>
+    <updated>2019-12-26T15:44:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。</li></ul><h3 id="本文内容："><a href="#本文内容：" class="headerlink" title="本文内容："></a>本文内容：</h3><p>1.云服务器环境部署：nginx安装配置，git安装配置；<br>2.本地环境部署：hexo安装配置，提交至服务器<br> <a id="more"></a></p><h2 id="一、前置条件"><a href="#一、前置条件" class="headerlink" title="一、前置条件"></a>一、前置条件</h2><p>1.你需要有一台电脑，我的电脑-MacOS 10.12.3<br>2.一个云服务器，我的ECS-ubuntu_16_0402_64_40G</p><h2 id="二、服务器配置步骤"><a href="#二、服务器配置步骤" class="headerlink" title="二、服务器配置步骤"></a>二、服务器配置步骤</h2><p>1.连接服务器</p><ul><li>Mac终端执行命令：<ul><li>ssh root@你的IP地址</li><li>按照提示输入root用户的密码即可连接成功。</li></ul></li><li>也可使用secureCRT等SSH工具：<ul><li>填写IP、用户名、密码登录连接。</li></ul></li></ul><p>2.安装各种依赖服务</p><ul><li><p>命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt update   # 同步/etc/apt/sources.list和/etc/apt/sources.list.d 中列出的源的索引</span><br><span class="line">apt upgrade -y   # 升级已安装的所有软件包</span><br><span class="line">apt install git -y   # 安装git</span><br><span class="line">curl -sL https://deb.nodesource.com/setup | bash</span><br><span class="line">apt install nodejs -y   # 安装nodejs</span><br><span class="line">apt install nginx -y   # 安装nginx</span><br><span class="line">cd /etc/nginx/sites-available</span><br><span class="line">rm -rf default   # 删除默认配置</span><br></pre></td></tr></table></figure><p>  此时访问IP应该出现nginx默认页面（如下图所示），恭喜nginx安装成功~<br><img src="quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg =506x203" alt="IMAGE"></p></li></ul><p>3.创建远程git库并初始化一个中心仓库（裸仓库）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /blog/hexo/gremory.git    # 依次创建目录，建议想一个自己比较好记的路径，后面会用到</span><br><span class="line">cd /blog/hexo/gremory.git</span><br><span class="line">git init --bare   # 初始化一个裸仓库，裸仓库不包含工作区</span><br><span class="line">cd hooks</span><br><span class="line">vi post-receive  # 创建并编辑文件， 此文件是用来监听本地的push操作时执行文件里的命令</span><br></pre></td></tr></table></figure></p><p>4.编辑post-receive文件，将以下内容根据自己的git仓库，git临时库，网站根目录进行替换后写入post-receive中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash -l</span><br><span class="line">GIT_REPO=/blog/hexo/gremory.git  # git仓库目录</span><br><span class="line">TMP_GIT_CLONE=/tmp/hexo  # 临时仓库，没有的话先mkdir创建目录</span><br><span class="line">PUBLIC_WWW=/usr/share/nginx/hexo  # 网站根目录，可直接cd到/usr/share/nginx路径下创建</span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;  # 删除临时仓库</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE  # 克隆到临时仓库</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;/*  # 删除博客目录所有内容</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125;  # 将仓库文件拷贝到博客目录</span><br><span class="line">cd ~</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">#另一种写法 </span><br><span class="line">#rm -rf /home/git/hexo</span><br><span class="line">#git clone /home/git/hexo.git /home/git/hexo</span><br><span class="line"></span><br><span class="line">#rm -rf /usr/share/nginx/hexo/*</span><br><span class="line">#mv /home/git/hexo/* /usr/share/nginx/hexo</span><br></pre></td></tr></table></figure></p><p>5.给post-receive赋予执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure></p><p>6.配置nginx</p><h2 id="三、本地配置步骤"><a href="#三、本地配置步骤" class="headerlink" title="三、本地配置步骤"></a>三、本地配置步骤</h2><p>1.安装各种工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   # 安装homebrew</span><br><span class="line">brew install node   # 安装node.js</span><br><span class="line">npm install -g hexo-cli  # 安装Hexo</span><br><span class="line">cd /Documents</span><br><span class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</span><br></pre></td></tr></table></figure></p><p>2.初始化Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">`</span><br><span class="line">cd /Documents</span><br><span class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</span><br><span class="line">hexo init   # 初始化blog环境</span><br><span class="line"></span><br><span class="line">hexo d -fg   # 部署</span><br><span class="line">hexo s   # 开启本地预览服务</span><br></pre></td></tr></table></figure></p><p>`* 此时访问<a href="http://localhost:4000，能看到blog主页。" target="_blank" rel="noopener">http://localhost:4000，能看到blog主页。</a></p><h2 id="四、提交到服务器"><a href="#四、提交到服务器" class="headerlink" title="四、提交到服务器"></a>四、提交到服务器</h2><p>1.进入本地博客目录，执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .  # 把需要更新的所有文件添加到本地仓库</span><br><span class="line">git commit -m &quot;update message&quot;  # 提交到本地仓库</span><br><span class="line">git push  # 提交到远程仓库，这里指服务器，如果提示需要输入密码，输入服务器密码即可；</span><br></pre></td></tr></table></figure></p><ul><li>如果提交的时候提示cp: target ‘<em> </em> *’ is not a directory意思是这不是一个目录, 所以要去创建一个目录</li></ul><p>上文PUBLIC_WWW表示网站的根目录,<br>直接执行mkdir /var/www/yuxiang.ren 创建网站根目录<br>再次提交<br>提示Everything up-to-date<br>那就随便改一下重新部署并提交呗</p><h2 id="五、一键部署"><a href="#五、一键部署" class="headerlink" title="五、一键部署"></a>五、一键部署</h2><p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p><p>$ hexo deploy<br>在开始之前，您必须先在 _config.yml中修改参数，一个正确的部署配置中至少要有 type 参数，例如：</p><p>deploy:<br>  type: git<br>您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。</p><p>deploy:</p><ul><li>type: git<br>repo:</li><li>type: heroku<br>repo:</li></ul><h2 id="六、其他事项"><a href="#六、其他事项" class="headerlink" title="六、其他事项"></a>六、其他事项</h2><p>1.如何做到首页默认显示摘要？</p><ul><li>在希望显示为摘要的段落后加上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure></li></ul><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul><li><a href="http://www.cnblogs.com/peteremperor/p/6135809.html" target="_blank" rel="noopener">Mac下使用SSH(密钥)访问Github</a></li><li><a href="http://www.jianshu.com/p/b7886271e21a" target="_blank" rel="noopener">Hexo安装和配置</a></li><li><a href="https://segmentfault.com/a/1190000005723321" target="_blank" rel="noopener">阿里云VPS搭建自己的的Hexo博客</a></li><li><a href="https://yuxiang.ren/2017/04/24/use-hexo-on-aliyun-and-update-with-git/" target="_blank" rel="noopener">在阿里云上使用hexo并且用git更新</a></li><li><a href="http://www.jianshu.com/p/8c55f103e8b4" target="_blank" rel="noopener">Hexo与阿里云虚拟主机搭建博客</a></li><li><a href="https://www.zhihu.com/question/60329559" target="_blank" rel="noopener">如何使用阿里云+Hexo搭建个人静态博客?</a></li><li><a href="http://sobaigu.com/Hexo-git-to-vps.html" target="_blank" rel="noopener">开始新的折腾，Hexo博客Git-VPS部署完整记录</a></li><li><a href="http://blog.csdn.net/anonymalias/article/details/50528946" target="_blank" rel="noopener">通过Hexo在GitHub搭站全记录</a></li><li><a href="http://www.cnblogs.com/visugar/p/6821777.html" target="_blank" rel="noopener">hexo从零开始到搭建完整</a></li><li><a href="https://hexo.io/zh-cn/docs/one-command-deployment" target="_blank" rel="noopener">Hexo</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;本文内容：&quot;&gt;&lt;a href=&quot;#本文内容：&quot; class=&quot;headerlink&quot; title=&quot;本文内容：&quot;&gt;&lt;/a&gt;本文内容：&lt;/h3&gt;&lt;p&gt;1.云服务器环境部署：nginx安装配置，git安装配置；&lt;br&gt;2.本地环境部署：hexo安装配置，提交至服务器&lt;br&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="hexo" scheme="http:/118.24.105.239:66/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello Hexo</title>
+    <link href="http://118.24.105.239:66/2017/08/26/Hello-Hexo/"/>
+    <id>http://118.24.105.239:66/2017/08/26/Hello-Hexo/</id>
+    <published>2017-08-26T12:32:01.000Z</published>
+    <updated>2017-08-26T12:34:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="hello-hexo"><a href="#hello-hexo" class="headerlink" title="hello hexo"></a>hello hexo</h3><ul><li>我的第一篇blog。</li><li>我部署的blog。</li><li>再见。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;hello-hexo&quot;&gt;&lt;a href=&quot;#hello-hexo&quot; class=&quot;headerlink&quot; title=&quot;hello hexo&quot;&gt;&lt;/a&gt;hello hexo&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;我的第一篇blog。&lt;/li&gt;
+&lt;li&gt;我部署的blog。&lt;/l
+      
+    
+    </summary>
+    
+    
+    
+      <category term="tag" scheme="http:/118.24.105.239:66/tags/tag/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://118.24.105.239:66/2017/08/26/hello-world/"/>
+    <id>http://118.24.105.239:66/2017/08/26/hello-world/</id>
+    <published>2017-08-26T12:10:54.000Z</published>
+    <updated>2017-08-26T12:10:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
