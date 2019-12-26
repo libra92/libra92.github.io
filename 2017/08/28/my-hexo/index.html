@@ -25,7 +25,7 @@
 <meta property="og:description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:/118.24.105.239:66/2017/08/28/my-hexo/quiver-image-url/891D9991718AF9FE7372B900A3667041.jpg%20=506x203">
-<meta property="og:updated_time" content="2018-03-13T16:19:45.000Z">
+<meta property="og:updated_time" content="2019-12-26T13:15:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建hexo并且在阿里云服务器更新 | Hexo  blog">
 <meta name="twitter:description" content="作为一枚小白，记录下第一次搭建hexo并且在阿里云服务器更新。  本文内容：1.云服务器环境部署：nginx安装配置，git安装配置；2.本地环境部署：hexo安装配置，提交至服务器 一、前置条件1.你需要有一台电脑，我的电脑-MacOS 10.12.32.一个云服务器，我的ECS-ubuntu_16_0402_64_40G 二、服务器配置步骤1.连接服务器  Mac终端执行命令： ssh ro">
@@ -255,9 +255,19 @@ classes that you can use:
 <h2 id="三、本地配置步骤"><a href="#三、本地配置步骤" class="headerlink" title="三、本地配置步骤"></a>三、本地配置步骤</h2><p>1.安装各种工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   # 安装homebrew</div><div class="line">brew install node   # 安装node.js</div><div class="line">npm install -g hexo-cli  # 安装Hexo</div><div class="line">cd /Documents</div><div class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</div></pre></td></tr></table></figure></p>
 <p>2.初始化Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">`</div><div class="line">cd /Documents</div><div class="line">mkdir gremory   &amp;&amp;   cd gremory   # 本地博客存放目录</div><div class="line">hexo init   # 初始化blog环境</div><div class="line"></div><div class="line">hexo d -fg   # 部署</div><div class="line">hexo s   # 开启本地预览服务</div></pre></td></tr></table></figure></p>
 <p>`* 此时访问<a href="http://localhost:4000，能看到blog主页。" target="_blank" rel="external">http://localhost:4000，能看到blog主页。</a></p>
-<h2 id="四、提交到服务器"><a href="#四、提交到服务器" class="headerlink" title="四、提交到服务器"></a>四、提交到服务器</h2><p>1.进入本地博客目录，执行以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`</div></pre></td></tr></table></figure>
-<p>`</p>
+<h2 id="四、提交到服务器"><a href="#四、提交到服务器" class="headerlink" title="四、提交到服务器"></a>四、提交到服务器</h2><p>1.进入本地博客目录，执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .  # 把需要更新的所有文件添加到本地仓库</div><div class="line">git commit -m &quot;update message&quot;  # 提交到本地仓库</div><div class="line">git push  # 提交到远程仓库，这里指服务器，如果提示需要输入密码，输入服务器密码即可；</div></pre></td></tr></table></figure></p>
+<ul>
+<li>如果提交的时候提示cp: target ‘<em> </em> *’ is not a directory意思是这不是一个目录, 所以要去创建一个目录</li>
+</ul>
+<p>上文PUBLIC_WWW表示网站的根目录,<br>直接执行mkdir /var/www/yuxiang.ren 创建网站根目录<br>再次提交<br>提示Everything up-to-date<br>那就随便改一下重新部署并提交呗</p>
+<h2 id="五、一键部署"><a href="#五、一键部署" class="headerlink" title="五、一键部署"></a>五、一键部署</h2><p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
+<p>$ hexo deploy<br>在开始之前，您必须先在 _config.yml中修改参数，一个正确的部署配置中至少要有 type 参数，例如：</p>
+<p>deploy:<br>  type: git<br>您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。</p>
+<p>deploy:</p>
+<ul>
+<li>type: git<br>repo:</li>
+<li>type: heroku<br>repo:</li>
+</ul>
 <h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
 <li><a href="http://www.cnblogs.com/peteremperor/p/6135809.html" target="_blank" rel="external">Mac下使用SSH(密钥)访问Github</a></li>
 <li><a href="http://www.jianshu.com/p/b7886271e21a" target="_blank" rel="external">Hexo安装和配置</a></li>
@@ -268,6 +278,7 @@ classes that you can use:
 <li><a href="http://sobaigu.com/Hexo-git-to-vps.html" target="_blank" rel="external">开始新的折腾，Hexo博客Git-VPS部署完整记录</a></li>
 <li><a href="http://blog.csdn.net/anonymalias/article/details/50528946" target="_blank" rel="external">通过Hexo在GitHub搭站全记录</a></li>
 <li><a href="http://www.cnblogs.com/visugar/p/6821777.html" target="_blank" rel="external">hexo从零开始到搭建完整</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/one-command-deployment" target="_blank" rel="external">Hexo</a></li>
 </ul>
 
   </section>
