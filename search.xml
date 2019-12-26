@@ -3,8 +3,18 @@
   <entry>
     <title>tomcat+jenkins+ant+jmeter部署</title>
     <url>/2019/12/26/jenkins/</url>
-    <content><![CDATA[<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>1.官网下载对应的版本，<a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-90.cgi</a><br> <img src="/images/Tomcat1.jpg" alt><br> <a id="more"></a></p>
-<p>2.解压文件至E盘<br>3.打开终端进入bin目录下，执行service.bat install<br>E:\Program Files\apache-tomcat-9.0.30\bin<br> <img src="/images/Tomcat2.jpg" alt><br>4.在tomcat\bin目录，双击 tomcat9W.exe 图形界面程序，在弹出的图形界面中，点击start，运行tomcat，浏览器输入localhost:8080,访问</p>
+    <content><![CDATA[<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>1.官网下载对应的版本，<a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-90.cgi</a><br>  <a id="more"></a></p>
+<p><img src="/images/Tomcat1.jpg" alt></p>
+<p>2.解压文件至E盘<br>3.打开终端进入bin目录下，执行<br><figure class="highlight plain"><figcaption><span>install ```</span></figcaption><table><tr><td class="code"><pre><span class="line">E:\Program Files\apache-tomcat-9.0.30\bin</span><br><span class="line"> ![](/images/Tomcat2.jpg)</span><br><span class="line">4.在tomcat\bin目录，双击 tomcat9W.exe 图形界面程序，在弹出的图形界面中，点击start，运行tomcat，浏览器输入localhost:8080,访问</span><br><span class="line"> ![](/images/Tomcat.jpg)</span><br><span class="line"></span><br><span class="line">5. 看到以下页面即安装成功</span><br><span class="line">![](/images/Tomcat.jpg)</span><br><span class="line"></span><br><span class="line">## ant安装</span><br><span class="line">1.下载地址 http://ant.apache.org//bindownload.cgi</span><br><span class="line">2.解压下载的压缩包</span><br><span class="line">3.配置环境变量</span><br></pre></td></tr></table></figure></p>
+<p>ANT_HOME<br>D:\All\java\JavaSoftware\apache-ant-1.10.5-bin\apache-ant-1.10.5<br>Path<br>%ANT_HOME%\bin<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4.校验是否配置成功</span><br><span class="line">```ant -version</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Tomcat.jpg" alt></p>
+<p>5.将 jmeter的extras目录中ant-jmeter-1.1.1.jar包拷贝至ant安装目录下的lib目录中<br><img src="/images/Tomcat.jpg" alt><br><img src="/images/Tomcat.jpg" alt></p>
+<p>6.jmeter默认保存的是.csv格式的文件，先要设置一下jmeter中的bin/jmeter.properties文件内容，保存修改为XML内容 jmeter.save.saveservice.output_format=xml，并去掉前面的注释符号#<br>修改前：<br><img src="/images/Tomcat.jpg" alt><br>修改后：<br><img src="/images/Tomcat.jpg" alt></p>
+<h2 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h2><p>1.下载jenkins，<a href="https://jenkins.io/zh/，我选择的是稳定版" target="_blank" rel="noopener">https://jenkins.io/zh/，我选择的是稳定版</a></p>
+<p>2.安装Jenkins至Tomcat目录下，E:\Program Files\apache-tomcat-9.0.30\webapps </p>
+<p>3.安装完成后会自动打开localhost:8080，然后出现弹窗</p>
+<p>4.密码存在E:\Program Files\apache-tomcat-9.0.30\webapps\Jenkins\secrets\initialAdminPassword文件中</p>
+<p>5.提示离线可能是Tomcat未启动，建议先启动Tomcat再访问localhost:8080</p>
 ]]></content>
   </entry>
   <entry>
@@ -94,6 +104,7 @@
     <url>/2017/08/26/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>

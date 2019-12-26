@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://118.24.105.239:66/"/>
-  <updated>2019-12-26T15:41:41.000Z</updated>
+  <updated>2019-12-26T16:10:14.000Z</updated>
   <id>http://118.24.105.239:66/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://118.24.105.239:66/2019/12/26/jenkins/"/>
     <id>http://118.24.105.239:66/2019/12/26/jenkins/</id>
     <published>2019-12-26T13:06:37.000Z</published>
-    <updated>2019-12-26T15:41:41.000Z</updated>
+    <updated>2019-12-26T16:10:14.000Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;安装Tomcat&quot;&gt;&lt;a href=&quot;#安装Tomcat&quot; class=&quot;headerlink&quot; title=&quot;安装Tomcat&quot;&gt;&lt;/a&gt;安装Tomcat&lt;/h2&gt;&lt;p&gt;1.官网下载对应的版本，&lt;a href=&quot;https://tomcat.apache.org/download-90.cgi&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://tomcat.apache.org/download-90.cgi&lt;/a&gt;&lt;br&gt; &lt;img src=&quot;/images/Tomcat1.jpg&quot; alt&gt;&lt;br&gt;
+      &lt;h2 id=&quot;安装Tomcat&quot;&gt;&lt;a href=&quot;#安装Tomcat&quot; class=&quot;headerlink&quot; title=&quot;安装Tomcat&quot;&gt;&lt;/a&gt;安装Tomcat&lt;/h2&gt;&lt;p&gt;1.官网下载对应的版本，&lt;a href=&quot;https://tomcat.apache.org/download-90.cgi&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://tomcat.apache.org/download-90.cgi&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
@@ -85,17 +85,12 @@
     <link href="http://118.24.105.239:66/2017/08/26/hello-world/"/>
     <id>http://118.24.105.239:66/2017/08/26/hello-world/</id>
     <published>2017-08-26T12:10:54.000Z</published>
-    <updated>2017-08-26T12:10:54.000Z</updated>
+    <updated>2019-12-26T16:02:21.000Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
